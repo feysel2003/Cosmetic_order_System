@@ -1,0 +1,767 @@
+/* =======================================
+   Modern Brand Panel Stylesheet
+   ======================================= */
+
+/* --- Variables & Base Styles --- */
+:root {
+    --primary-color: #d63384; /* Brand Pink */
+    --secondary-color: #6c757d; /* Gray */
+    --success-color: #198754; /* Green */
+    --danger-color: #dc3545; /* Red */
+    --warning-color: #ffc107; /* Yellow */
+    --info-color: #0dcaf0; /* Cyan */
+
+    --light-bg: #f8f9fa;
+    --light-card-bg: #ffffff;
+    --light-text: #212529;
+    --light-border: #dee2e6;
+    --light-muted-text: #6c757d;
+    --light-link: #0d6efd;
+    --light-hover-bg: #e9ecef;
+
+    --dark-bg: #121212;
+    --dark-card-bg: #1e1e1e;
+    --dark-text: #e9ecef;
+    --dark-border: #495057;
+    --dark-muted-text: #adb5bd;
+    --dark-link: #6ea8fe;
+    --dark-hover-bg: #343a40;
+
+    --border-radius: 0.375rem; /* Bootstrap's default */
+    --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --box-shadow-lg: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+    --font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+    /* Default to light theme */
+    --bg-color: var(--light-bg);
+    --card-bg-color: var(--light-card-bg);
+    --text-color: var(--light-text);
+    --border-color: var(--light-border);
+    --muted-text-color: var(--light-muted-text);
+    --link-color: var(--light-link);
+    --hover-bg-color: var(--light-hover-bg);
+    --navbar-bg: var(--light-card-bg);
+    --footer-bg: var(--light-card-bg);
+    --footer-text: var(--light-text);
+}
+
+body.dark-mode {
+    --bg-color: var(--dark-bg);
+    --card-bg-color: var(--dark-card-bg);
+    --text-color: var(--dark-text);
+    --border-color: var(--dark-border);
+    --muted-text-color: var(--dark-muted-text);
+    --link-color: var(--dark-link);
+    --hover-bg-color: var(--dark-hover-bg);
+    --navbar-bg: var(--dark-card-bg);
+    --footer-bg: var(--dark-card-bg);
+    --footer-text: var(--dark-text);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: var(--font-family-sans-serif);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+.img-responsive{
+    border-radius: 50%;
+}
+/* --- Utility Classes --- */
+.wraper { /* Renamed from 'wrapper' in your original code */
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 0; /* Add some vertical padding */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--navbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 0;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar .wraper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Push logo and menu apart */
+    padding: 0 1rem; /* Padding inside wraper for spacing */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo a {
+    display: inline-block; /* Ensures link wraps image correctly */
+}
+
+.logo-image {
+    height: 50px; /* Reduced size */
+    width: 50px;  /* Reduced size */
+    object-fit: contain;
+    margin-bottom: 30px;
+    border-radius: 50%;
+}
+
+.system {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: inline; /* Keep inline */
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between items */
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 0;
+}
+
+.menu ul li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: var(--muted-text-color);
+    border-radius: var(--border-radius);
+    text-decoration: none; /* Remove underline */
+}
+
+.menu ul li a:hover,
+.menu ul li a.active /* Add .active class to current page link in PHP */ {
+    color: var(--primary-color);
+    background-color: var(--hover-bg-color);
+}
+
+.dark-mode-toggle {
+    cursor: pointer;
+    color: var(--muted-text-color);
+    font-size: 1.25rem; /* Make icon slightly larger */
+    padding: 0.75rem 1rem; /* Consistent padding */
+    margin-left: 10px; /* Space before burger */
+    border-radius: var(--border-radius);
+}
+.dark-mode-toggle:hover {
+     background-color: var(--hover-bg-color);
+}
+
+/* Burger Menu */
+.burger-box {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    padding: 0.75rem;
+    margin-left: 20px; /* Space from menu items or dark mode toggle */
+    border-radius: var(--border-radius);
+}
+.burger-box:hover {
+     background-color: white;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    
+}
+
+/* Burger Animation */
+.burger.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.burger.toggle .line2 {
+    opacity: 0;
+}
+.burger.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* --- Main Content --- */
+.main-content {
+    flex-grow: 1; /* Allows main content to fill space */
+    padding: 2rem 0;
+}
+
+.main-content .wraper {
+     padding: 0 1rem; /* Padding inside wraper */
+}
+
+.main-content h1 {
+    font-size: 1.75rem; /* Slightly smaller H1 */
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* --- Dashboard Cards --- */
+/* Replace .col-4 structure with this */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 1.5rem; /* Space between cards */
+    margin-top: 2rem; /* Space below heading */
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.card h1 { /* Style the number inside the card */
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.card p, /* Assuming the text below number is <p> */
+.card div br + * /* Target text after <br> */ {
+    font-size: 1rem;
+    color: var(--muted-text-color);
+    margin-top: 0.5rem; /* Space above text */
+}
+/* Specific card colors if needed */
+.card.revenue { border-left: 5px solid var(--success-color); }
+.card.cosmetics { border-left: 5px solid var(--info-color); }
+.card.orders { border-left: 5px solid var(--warning-color); }
+
+
+/* --- Tables --- */
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg-color); /* Table background */
+  box-shadow: var(--box-shadow);
+}
+
+.tbl-full {
+  width: 100%;
+  border-collapse: collapse; /* Use collapse for cleaner lines */
+  color: var(--text-color);
+}
+
+/* Table Header */
+.tbl-full th {
+  padding: 1rem 1.2rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap; /* Prevent headers from wrapping */
+  text-transform: uppercase; /* Optional: Uppercase headers */
+  letter-spacing: 0.5px;   /* Optional: Spacing */
+}
+
+/* Table Body Rows */
+.tbl-full tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+.tbl-full tbody tr:last-child {
+    border-bottom: none; /* No border on last row */
+}
+.tbl-full tbody tr:nth-child(even) {
+  background-color: rgba(0,0,0,0.02); /* Subtle striping */
+}
+body.dark-mode .tbl-full tbody tr:nth-child(even) {
+  background-color: rgba(255,255,255,0.04); /* Dark mode striping */
+}
+.tbl-full tbody tr:hover {
+  background-color: var(--hover-bg-color);
+}
+
+/* Table Cells */
+.tbl-full td {
+  padding: 0.9rem 1.2rem;
+  vertical-align: middle;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+.tbl-full td img {
+    max-width: 80px; /* Limit image size in table */
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.tbl-full td .error { /* Style inline error messages */
+    color: var(--danger-color);
+    font-style: italic;
+    font-size: 0.85rem;
+}
+
+/* Status Labels in Tables */
+.tbl-full td .status-label { /* Add class="status-label" to your label/span in PHP */
+  display: inline-block;
+  padding: 0.3em 0.65em;
+  border-radius: var(--border-radius);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+.status-ordered    { background-color: var(--info-color); }
+.status-on-delivery{ background-color: var(--warning-color); color: var(--light-text); } /* Warning often needs dark text */
+.status-delivered  { background-color: var(--success-color); }
+.status-canceled   { background-color: var(--danger-color); }
+.status-default    { background-color: var(--secondary-color); }
+
+/* --- Forms --- */
+/* Apply to the form in update-cosmetic.php */
+.form-container { /* Add <div class="form-container"> around the form if possible */
+    background-color: var(--card-bg-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    max-width: 700px; /* Limit form width */
+    margin: 1rem auto; /* Center form */
+}
+
+/* Style the table used for form layout (tbl-30) */
+.tbl-30 {
+    width: 100%;
+    border-collapse: collapse; /* Remove spacing */
+}
+.tbl-30 td {
+    padding: 0.75rem 0.5rem; /* Spacing around form elements */
+    vertical-align: top; /* Align labels top */
+}
+.tbl-30 td:first-child { /* Label column */
+    width: 150px; /* Fixed width for labels */
+    font-weight: 500;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="number"],
+input[type="email"], /* Add if needed */
+input[type="password"], /* Add if needed */
+textarea,
+select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--bg-color); /* Slightly different bg for inputs */
+    background-clip: padding-box;
+    border: 1px solid var(--border-color);
+    appearance: none;
+    border-radius: var(--border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+input:focus, textarea:focus, select:focus {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25); /* Requires setting --primary-color-rgb */
+}
+/* Placeholder styling */
+input::placeholder, textarea::placeholder {
+    color: var(--muted-text-color);
+    opacity: 1;
+}
+
+/* Radio buttons / Checkboxes */
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: auto; /* Override width:100% */
+}
+/* Style labels associated with radios/checkboxes */
+.tbl-30 td input[type="radio"] + label,
+.tbl-30 td input[type="checkbox"] + label {
+    display: inline-block;
+    margin-right: 1rem; /* Space between options */
+    font-weight: normal;
+}
+
+/* File Input */
+input[type="file"] {
+    border: none; /* Often looks better without border */
+    padding-left: 0;
+    background-color: transparent;
+}
+input[type="file"]::file-selector-button { /* Style the button part */
+    padding: 0.5rem 0.75rem;
+    margin-right: 0.75rem;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+input[type="file"]::file-selector-button:hover {
+    background-color: #5a6268; /* Darken secondary */
+}
+
+/* Current image preview in form */
+.current-image-preview img {
+     max-width: 150px;
+     margin-top: 0.5rem;
+     border-radius: var(--border-radius);
+     border: 1px solid var(--border-color);
+}
+.current-image-preview .error {
+    color: var(--danger-color);
+    font-style: italic;
+}
+
+/* --- Buttons --- */
+.btn, /* Base button class */
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #fff; /* Default text color */
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem; /* Standard padding */
+    font-size: 0.9rem;
+    border-radius: var(--border-radius);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    margin: 0.25rem; /* Add small margin between adjacent buttons */
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #b82b72; /* Darker primary */
+    border-color: #a32664;
+    text-decoration: none; /* Remove underline on hover */
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #5a6268; /* Darker secondary */
+    border-color: #545b62;
+    text-decoration: none;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+.btn-danger:hover {
+    color: #fff;
+    background-color: #bb2d3b; /* Darker danger */
+    border-color: #b02a37;
+    text-decoration: none;
+}
+
+/* Add new button spacing */
+.add-button-link { /* Wrap the "Add New Cosmetic" link in PHP: <a href="..." class="add-button-link btn btn-primary">...</a> */
+    display: inline-block; /* Needed for margin */
+    margin: 1.5rem 0; /* Space above and below */
+}
+
+/* --- Flash Messages / Alerts --- */
+/* Use classes like .alert .alert-success or .alert .alert-danger */
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+.alert-success, .success /* Style existing .success */ {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+.alert-danger, .error /* Style existing .error */ {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+.alert-info, .unauthorize /* Style existing .unauthorize */ {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+/* Add dark mode variants for alerts */
+body.dark-mode .alert-success { background-color: #03281a; color: #75b798; border-color: #054029; }
+body.dark-mode .alert-danger  { background-color: #340a11; color: #ea868f; border-color: #58151c; }
+body.dark-mode .alert-warning { background-color: #332701; color: #ffda6a; border-color: #806703; }
+body.dark-mode .alert-info    { background-color: #022933; color: #6edff6; border-color: #044150; }
+
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: auto; /* Pushes footer to bottom */
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.footer p {
+    margin: 0;
+    color: var(--muted-text-color);
+}
+.footer a {
+    color: var(--primary-color); /* Brand color for link */
+    font-weight: 500;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Social Section */
+.social {
+    padding: 1.5rem 0;
+    background-color: var(--bg-color); /* Match body background */
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.social ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 0;
+    margin: 0;
+}
+.social ul li a img {
+    width: 32px; /* Slightly smaller icons */
+    height: 32px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.social ul li a:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+
+/* --- Responsive Design --- */
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    .main-content h1 {
+        font-size: 1.5rem;
+    }
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    .card h1 {
+        font-size: 2rem;
+    }
+
+    /* Responsive Table - Data Label Method */
+    .tbl-full thead {
+        display: none; /* Hide table header */
+    }
+    .tbl-full, .tbl-full tbody, .tbl-full tr, .tbl-full td {
+        display: block; /* Make table elements block level */
+        width: 100%;
+    }
+    .tbl-full tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color); /* Border around each card */
+        border-radius: var(--border-radius);
+        overflow: hidden; /* Clip contents */
+        background-color: var(--card-bg-color); /* Card background */
+    }
+    .tbl-full td {
+        text-align: right; /* Align value to the right */
+        padding-left: 50%; /* Make space for label */
+        position: relative;
+        border-bottom: 1px solid var(--border-color); /* Separator line */
+    }
+     .tbl-full tr td:last-child {
+         border-bottom: none; /* No border on last cell in card */
+     }
+    .tbl-full td::before {
+        content: attr(data-label); /* Use data-label attribute from PHP */
+        position: absolute;
+        left: 1rem;
+        width: calc(50% - 2rem); /* Calculate label width */
+        text-align: left;
+        font-weight: 600;
+        color: var(--muted-text-color);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+    /* Adjust specific cells if needed */
+     .tbl-full td img { float: right; /* Align image right */ margin-left: 10px; }
+     .tbl-full td .status-label { float: right; }
+     .tbl-full td a.btn { float: right; margin-top: 5px; }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 768px) {
+    .navbar .wraper {
+        padding: 0 0.5rem; /* Less padding on mobile */
+    }
+    .logo .system {
+        display: none; /* Hide text logo on small screens */
+    }
+    .menu {
+        position: absolute;
+        top: 66px; /* Adjust based on navbar height */
+        left: 0;
+        width: 100%;
+        background-color: var(--navbar-bg);
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--box-shadow);
+        /* Hide menu by default */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    .menu ul {
+        flex-direction: column; /* Stack links vertically */
+        align-items: stretch; /* Stretch items full width */
+        padding: 0.5rem 0; /* Padding top/bottom */
+        gap: 0;
+    }
+    .menu ul li {
+        width: 100%;
+    }
+    .menu ul li a {
+        padding: 0.75rem 1.5rem; /* More padding for tapping */
+        border-radius: 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+     .menu ul li:last-child a {
+         border-bottom: none;
+     }
+    .menu.active { /* Show menu when active */
+        max-height: 400px;
+        display: flex; /* Or large enough height */
+    }
+    .dark-mode-toggle {
+        margin-left: 5px; /* Less space */
+    }
+    .burger-box {
+        display: block;
+        z-index: 1000;
+        padding-left: 20%;
+        justify-content: center;
+         /* Show burger */
+    }
+    .burger{
+        padding-left: 50%;
+    }
+    .form-container {
+        padding: 1rem;
+    }
+    .tbl-30 td { padding: 0.5rem 0.25rem; }
+    .tbl-30 td:first-child { width: 100px; padding-right: 0.5rem; font-size: 0.9rem; }
+}

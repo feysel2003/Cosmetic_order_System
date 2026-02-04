@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Layout Utilities */
+.wraper {
+    padding: 1%;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.wrapper {
+    padding: 1%;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%; /* This lets it stretch full width */
+  }
+  
+
+.text-center {
+    text-align: center;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Table Layout */
+.tbl-full {
+    width: auto; /* Allow table to size based on content */
+    min-width: 100%; /* Ensure it at least fills the container */
+    border-collapse: collapse;
+}
+
+.tbl-30 {
+    width: 30%;
+}
+
+table tr th {
+    border-bottom: 1px solid gray;
+    padding: 1%;
+    text-align: left;
+    white-space: nowrap; /* Prevent text wrapping in headers */
+}
+
+table tr td {
+    padding: 1%;
+    white-space: nowrap; /* Prevent text wrapping in cells */
+}
+
+/* Responsive Table Container */
+.table-responsive {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+    background-color: #0d10b3;
+    color: #8dd813;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-danger:hover {
+    background-color: #8dd813;
+    color: #0d10b3;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+/* Menu Styling */
+.menu {
+    width: 100%;
+    background: #f4f4f4;
+    border-bottom: 1px solid rgb(142, 217, 104);
+    min-height: 60px; /* Increased height for the menu bar */
+    display:flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative;
+    z-index: 1000;
+    margin: 0 auto;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    margin: 0 15px;
+    height: 60px; /* Match the menu height */
+    display: flex;
+    align-items: center; /* Center the link vertically */
+}
+
+.menu ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: blueviolet;
+    transition: color 0.3s;
+    padding: 10px 15px; /* Increased padding for larger clickable area */
+    font-size: 18px; /* Slightly larger font for better readability */
+}
+
+.menu ul li a:hover {
+    color: rgb(142, 217, 104);
+}
+
+/* Main Content */
+.main-content {
+    background-color: rgb(79, 81, 81);
+    padding: 3% 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Dashboard Cards */
+
+
+.col-4 {
+    background-color: rgb(232, 79, 94);
+    padding: 2%;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .col-4:hover {
+    transform: translateY(-5px);
+  }
+  
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Fixed to 3 columns */
+    gap: 1.5rem;
+  }
+/* Revenue box tweaks */
+.Revenue {
+    width: fit-content;
+}
+
+/* Footer */
+.footer {
+    background-color: rgb(75, 66, 27);
+    color: rgb(215, 234, 226);
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wraper {
+        width: 95%;
+        padding: 2%;
+    }
+
+    .col-4 {
+        width: 100%;
+        float: none;
+        margin: 1% 0;
+    }
+
+    .menu {
+        min-height: auto; /* Allow height to adjust */
+        padding: 10px 0; /* Add padding for better spacing */
+    }
+
+    .menu ul {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .menu ul li {
+        margin: 10px 0; /* Vertical spacing between items */
+        height: auto; /* Let height adjust to content */
+    }
+
+    .menu ul li a {
+        padding: 10px 20px; /* Adjust padding for mobile */
+    }
+}
