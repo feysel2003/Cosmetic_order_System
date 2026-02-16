@@ -71,7 +71,7 @@ header("location:".SITEURL."admin/manage-admin.php");
 }
 else{
     //echo "DATA INSERTION IS FAILED";
-     //create a session to display message
+     //creating a session to display failed or unsucces message
 $_SESSION["add"]="Failed to Add Admin";
 //Redirect page to adde admin
 header("location:".SITEURL."admin/add-admin.php");
